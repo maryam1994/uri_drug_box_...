@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p class="page-head-line">پروفایل شخصی شما</p>
+   
+<div class="l-post">
+    <div class="row">
+        <div class="col-lg-12">
+		    <blockquote>
+		    	<p>
+		    		<br>
+					<strong>نام:</strong>
+				  	<%= @profile.name %><br><br>
+				  	<strong>شماره تماس:</strong>
+				  	<%= @profile.phone_number %>
+				  	<br>
+			  </p>
+			  <br><br><br>
+				<%= link_to 'تغییر دادن مشخصات', edit_profile_path(@profile) %>  &nbsp;|&nbsp;
+				<%= link_to 'بازگشت به صفحه ی اول', root_path %>
+  	        </blockquote>
+        </div>
+    </div>
+</div>
+
+<% if current_user.relatives.blank? %>
+	<%= link_to "نزدیکان خود را به ما معرفی کنید تا بتوانبم به اشیان اطلاع دهیم", new_relative_path %>
+<% end %>
+

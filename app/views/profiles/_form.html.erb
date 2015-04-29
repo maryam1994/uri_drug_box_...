@@ -1,0 +1,35 @@
+    <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"></div>
+            <div class="panel-body">
+              <%= form_for(@profile) do |f| %>
+                <% if @profile.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+                    <ul>
+                    <% @profile.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <div class="field">
+                  <%= f.label 'نام:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <%= f.text_field :name , :required => true %>
+                </div>
+                <div class="field">
+                  <%= f.label 'شماره تماس:' %>&nbsp;
+                  <%= f.text_field :phone_number , :required => true%>
+                </div> 
+                <div class="center">
+                  <%= f.submit (f.object.new_record? ? "ایجاد پروفایل" : "به روز رسانی پروفایل") ,:class => "btn btn-default"%>
+                </div><br>
+                <div class="center"><%= link_to 'بازگشت به صفحه قبل', root_path %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

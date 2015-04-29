@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"></div>
+            <div class="panel-body">
+              <%= form_for(@prow) do |f| %>
+                <% if @prow.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@prow.errors.count, "error") %> prohibited this prow from being saved:</h2>
+
+                    <ul>
+                    <% @prow.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                <br>
+                <div class="field">
+                  <%= f.label 'عنوان نسخه:' %>&nbsp;&nbsp;&nbsp;
+                  <%= f.select :prescription_id, current_user.prescriptions.all.collect{|p| [p.doctor_name, p.id]} , :required => true%>
+                </div>
+                <div class="field">
+                    <%= f.label 'نام دارو:'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <%=text_field_tag "drug_name" ,nil, :required => true%>
+                </div>
+                <div class="field">
+                    <%= f.label 'توضیحات دارو:'%>&nbsp;
+                    <%= text_field_tag "drug_description" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label 'دوره:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;هر
+                  <%= number_field :period_qty , min: 1, :required => true  %>
+                  <%= f.select :period , options_for_select([["ساعت", "1"],["روز", "2"],["هفته", "3"],["ماه", "4"]]) %>
+                
+                </div>
+                <div class="field">
+                  <%= f.label 'تعداد:'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <%= f.number_field :qty , min: 1, :required => true  %>
+                </div>
+                <div class = "center" class="actions">
+                  <%= f.submit (f.object.new_record? ? "افزودن" : "به روز رسانی") ,:class => "btn btn-default"%>
+                </div><br>
+                <div class = "center"><%= link_to 'بازگشت به صفحه نسخه ها', prescriptions_path %></div>
+
+              <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
