@@ -1,9 +1,15 @@
+<% if params[:title]=="new" %>
+  <p>new</p>
+<% else %>
+  <p>edit</p>
+<% end %>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6" style="margin-right: 100px !important;">
+      <%= form_for(@prow) do |f| %>
+        <p class ="m-page-title"><% (@prow.new_record? ? "اضافه کردن دارو" : "به روز رسانی دارو") %></p>
         <div class="panel panel-default">
           <div class="panel-heading"></div>
             <div class="panel-body">
-              <%= form_for(@prow) do |f| %>
                 <% if @prow.errors.any? %>
                   <div id="error_explanation">
                     <h2><%= pluralize(@prow.errors.count, "error") %> prohibited this prow from being saved:</h2>
@@ -30,8 +36,16 @@
                 </div>
 
                 <div class="field">
-                  <%= f.label 'دوره:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;هر
-                  <%= number_field :period_qty , min: 1, :required => true  %>
+                    <%= f.label 'ساعت شروع:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class = "left">
+                    <%=  f.time_select :start_time,:required => true  %>
+                  </div>
+                </div>
+
+
+                <div class="field">
+                  <%= f.label 'دوره:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  هر <%= number_field :period_qty , min:1, :required => true  %>
                   <%= f.select :period , options_for_select([["ساعت", "1"],["روز", "2"],["هفته", "3"],["ماه", "4"]]) %>
                 
                 </div>

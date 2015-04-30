@@ -32,7 +32,7 @@
                             <% end %>
                             <li><%= link_to "روش یادآوری", notifications_path %></li>
                             <li><%= link_to "نسخه ها", prescriptions_path %></li>
-                            <li><%= link_to "افزودن دارو", new_prow_path(:format => :js) , :remote => true %></li>
+                            <li><%= link_to "افزودن دارو", new_prow_path(:format => :js, :title => "new") , :remote => true %></li>
                         <% else %>
                             <li><%= link_to "افزودن مشخصات", new_profile_path %></li>
                         <% end %>

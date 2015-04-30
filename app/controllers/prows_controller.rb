@@ -16,7 +16,6 @@ class ProwsController < ApplicationController
   # GET /prows/new
   def new
     @prow = Prow.new 
-    @prow.prescription_id = params[:prescription_id]
 
     respond_to do |format|
       format.html { render 'new.html.erb' }
@@ -30,6 +29,8 @@ class ProwsController < ApplicationController
 
   # POST /prows
   # POST /prows.json
+  
+    
   def create
     @prow = Prow.new(prow_params)
     # @prescription =  Prescription.find(params[:prescription])  
@@ -37,15 +38,9 @@ class ProwsController < ApplicationController
     @drug =  Drug.find_by_name(params[:drug_name])  
     @prow.drug_id = @drug.id
 
-    puts "///////////////////////////////////////////////////////////////"
-    puts params[:prescription_id]
-    
-    @prow.prescription_id = params[:prescription_id]
-    
-
     respond_to do |format|
       if @prow.save
-        format.html { redirect_to prescription_path(:id => @prow.prescription_id) }
+        format.html { redirect_to @prow, notice: 'Prow was successfully created.' }
         format.json { render :show, status: :created, location: @prow }
       else
         format.html { render :new }
