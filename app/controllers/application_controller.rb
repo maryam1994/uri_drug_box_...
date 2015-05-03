@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if !user.profile.blank?
       root_path
     else
-      new_profile_path
+      new_profile_path(:title => "new")
     end
   end
   
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     if !user.profile.blank?
       root_path
     else
-      new_profile_path
+      new_profile_path(:title => "new")
     end
   end
 
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     if !user.profile.blank?
       root_path
     else
-      new_profile_path
+      new_profile_path(:title => "new")
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430071619) do
+ActiveRecord::Schema.define(version: 20150430122752) do
 
   create_table "box_parts", force: :cascade do |t|
     t.string   "part_num"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150430071619) do
     t.integer  "qty"
     t.integer  "drug_id"
     t.datetime "start_time"
+    t.string   "period_type"
   end
 
   create_table "relatives", force: :cascade do |t|

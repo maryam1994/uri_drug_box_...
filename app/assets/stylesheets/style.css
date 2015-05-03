@@ -34,7 +34,7 @@ input,
 select,
 textarea {
 	color: #828181;
-	font-size: 20px;
+	font-size: 20px !important;
 	/*font-size: 1.6rem;*/
 	line-height: 1.5;
 	font-family: 'Far_Yas';
@@ -1109,11 +1109,13 @@ h1.t-site-title a {
 /* page content */
 
 .m-page-title {
-	width: 100%;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	margin-bottom: 11px;
+	width: 50%;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+	margin-top: 15px;
+	margin-bottom: 15px;
 	padding: 0 0 10px 0;
-	float: left;
+	float: right;
+	font-size: 25px;
 }
 
 /* flexslider */

@@ -49,3 +49,13 @@ th , td{
     background-color: #6DBBA0;
     /*background-color: red; */
 }   
+.center_table{
+    margin-right: 110px !important;
+}
+#user ul li a{
+    background-color: #FFFACD !important;
+    font-size: 25px;
+}
+#user{
+    padding-top: 70px;
+}
